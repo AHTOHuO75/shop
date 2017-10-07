@@ -2,8 +2,8 @@ require 'yaml'
 require 'fileutils'
 
 domains = {
-  frontend: 'y2aa-frontend.dev',
-  backend:  'y2aa-backend.dev'
+  frontend: 'shop.dev',
+  backend:  'shopbe.dev'
 }
 
 config = {
@@ -25,7 +25,8 @@ end
 # vagrant configurate
 Vagrant.configure(2) do |config|
   # select the box
-  config.vm.box = 'bento/ubuntu-16.04'
+  #config.vm.box = 'bento/ubuntu-16.04'
+  config.vm.box = 'centos/7'
 
   # should we ask about box updates?
   config.vm.box_check_update = options['box_check_update']
