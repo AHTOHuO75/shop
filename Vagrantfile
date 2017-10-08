@@ -24,9 +24,10 @@ end
 
 # vagrant configurate
 Vagrant.configure(2) do |config|
-  # select the box
+  # select the boxvagr
   #config.vm.box = 'bento/ubuntu-16.04'
-  config.vm.box = 'centos/7'
+  config.vm.box = "bento/ubuntu-16.04-i386"
+  #config.vm.box_version = "201708.22.0"
 
   # should we ask about box updates?
   config.vm.box_check_update = options['box_check_update']
@@ -48,6 +49,7 @@ Vagrant.configure(2) do |config|
 
   # network settings
   config.vm.network 'private_network', ip: options['ip']
+  #config.vm.network 'public_network', ip: options['ip']
 
   # sync: folder 'yii2-app-advanced' (host machine) -> folder '/app' (guest machine)
   config.vm.synced_folder './', '/app', owner: 'vagrant', group: 'vagrant'
@@ -70,4 +72,6 @@ Vagrant.configure(2) do |config|
 
   # post-install message (vagrant console)
   config.vm.post_up_message = "Frontend URL: http://#{domains[:frontend]}\nBackend URL: http://#{domains[:backend]}"
+
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 end
