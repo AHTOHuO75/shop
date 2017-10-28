@@ -14,7 +14,7 @@ box_check_update: false
 machine_name: shop
 
 # Virtual machine IP
-ip: 192.168.1.203
+ip: 192.168.2.203
 
 # Virtual machine CPU cores number
 cpus: 1

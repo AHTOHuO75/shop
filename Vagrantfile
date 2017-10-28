@@ -3,7 +3,7 @@ require 'fileutils'
 
 domains = {
   frontend: 'shop.dev',
-  backend:  'shopbe.dev'
+  backend:  'be.shop.dev'
 }
 
 config = {
@@ -49,6 +49,7 @@ Vagrant.configure(2) do |config|
 
   # network settings
   config.vm.network 'private_network', ip: options['ip']
+  #config.vm.network 'private_network', ip: '192.168.2.203'
   #config.vm.network 'public_network', ip: options['ip']
 
   # sync: folder 'yii2-app-advanced' (host machine) -> folder '/app' (guest machine)

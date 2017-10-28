@@ -5,9 +5,14 @@ return [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/nmp-asset',
     ],
+    'bootstrap' => [
+        'common\bootstrap\SetUp',
+    ],
     'components' => [
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            //'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\MemCache',
+            'useMemcached' => true,
         ],
     ],
 ];
