@@ -2,16 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: root
- * Date: 10/29/17
- * Time: 5:56 PM
+ * Date: 11/13/17
+ * Time: 7:29 PM
  */
 
 namespace common\tests\unit\entities\User;
 
-use Codeception\Test\Unit;
-use common\entities\User;
 
-class SignupTest extends Unit
+use common\entities\User;
+use Codeception\Test\Unit;
+
+class RequestSignupTest extends Unit
 {
     public function testSuccess()
     {
@@ -21,14 +22,15 @@ class SignupTest extends Unit
             $password = 'password'
         );
 
-     /*   $this->assertEquals($username, $user->username);
-        $this->assertEquals($email, $user->email);
+        $this->assertEquals($username,$user->username);
+        $this->assertEquals($email,$user->email);
         $this->assertNotEmpty($user->password_hash);
-        $this->assertNotEquals($password, $user->password_hash);
+        $this->assertNotEquals($password,$user->password_hash);
         $this->assertNotEmpty($user->created_at);
         $this->assertNotEmpty($user->auth_key);
-        //$this->assertEquals($user->status, User::STATUS_ACTIVE);
-        $this->assertTrue($user->isActive());*/
+        $this->assertNotEmpty($user->email_confirm_token);
+        $this->assertTrue($user->isWait());
+        $this->assertFalse($user->isActive());
     }
 
 }
