@@ -218,7 +218,7 @@ class SiteController extends Controller
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        $form = new ResetPasswordForm();
+        $form = new ResetPasswordForm($token);
 
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
