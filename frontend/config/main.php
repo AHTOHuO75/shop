@@ -9,7 +9,10 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        'common\bootstrap\SetUp'
+    ],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
@@ -17,7 +20,7 @@ return [
             'cookieValidationKey' => $params['cookieValidationKey'],
         ],
         'user' => [
-            'identityClass' => 'common\entities\User',
+            'identityClass' => 'shop\entities\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity', 'httpOnly' => true, 'domain' => $params['cookieDomain'],],
         ],
@@ -41,11 +44,12 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'frontendUrlManager' => require __DIR__ . '/urlManager.php',
         'backendUrlManager' => require __DIR__ . '/../../backend/config/urlManager.php',
-        'urlManager' => function (){
+        'frontendUrlManager' => require __DIR__ . '/urlManager.php',
+        'urlManager' => function () {
             return Yii::$app->get('frontendUrlManager');
         },
+
 
     ],
     'params' => $params,

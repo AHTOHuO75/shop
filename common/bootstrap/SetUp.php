@@ -8,11 +8,10 @@
 
 namespace common\bootstrap;
 
-use frontend\services\auth\PasswordResetService;
-use frontend\services\contact\ContactService;
+use shop\services\auth\PasswordResetService;
+use shop\services\ContactService;
 use Yii;
 use yii\base\BootstrapInterface;
-use yii\di\Instance;
 use yii\mail\MailerInterface;
 
 class SetUp implements BootstrapInterface
@@ -30,12 +29,18 @@ class SetUp implements BootstrapInterface
         $container->setSingleton(MailerInterface::class,function () use ($app){
             return $app->mailer;
         });
-        $container->setSingleton(PasswordResetService::class,[],[
-            [Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'],
-        ]);
-        $container->setSingleton(ContactService::class,[],[
-        [Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'],
-        [Yii::$app->params['adminEmail'] => Yii::$app->name . ' robot'],
-    ]);
+        if (isset(Yii::$app->params['supportEmail'])) {
+            $container->setSingleton(PasswordResetService::class,[],[
+                [Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'],
+            ]);
+        }
+        if (!empty(Yii::$app->params['supportEmail'])) {
+            if (!empty(Yii::$app->params['adminEmail'])) {
+                $container->setSingleton(ContactService::class,[],[
+                [Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'],
+                [Yii::$app->params['adminEmail'] => Yii::$app->name . ' robot'],
+            ]);
+            }
+        }
     }
 }
