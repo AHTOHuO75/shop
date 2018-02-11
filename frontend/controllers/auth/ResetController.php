@@ -36,7 +36,7 @@ class ResetController extends Controller
             }
         }
 
-        return $this->render('//auth/reset/request', [
+        return $this->render('request', [
             'model' => $form,
         ]);
     }

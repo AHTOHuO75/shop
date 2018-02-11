@@ -14,7 +14,7 @@ use shop\{
     forms\auth\PasswordResetRequestForm, repositories\UserRepository
 };
 use shop\forms\auth\ResetPasswordForm;
-use shop\entities\User;
+use shop\entities\User\User;
 use Yii;
 use yii\mail\MailerInterface;
 

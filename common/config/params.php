@@ -6,4 +6,5 @@ return [
     'cookieDomain' => '.shop.dev',
     'frontendHostInfo' => 'http://shop.dev',
     'backendHostInfo' => 'http://be.shop.dev',
+    'user.rememberMeDuration' => 3600 * 24 * 30,
 ];

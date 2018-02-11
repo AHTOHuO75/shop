@@ -9,7 +9,7 @@
 namespace shop\tests\unit\entities\User;
 
 
-use shop\entities\User;
+use shop\entities\User\User;
 use Codeception\Test\Unit;
 
 class RequestSignupTest extends Unit
